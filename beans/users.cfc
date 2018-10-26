@@ -1,4 +1,4 @@
-component persistent="true" output="false" {
+component persistent="true" {
 
 property name="id" fieldtype="id" generator="identity";
 

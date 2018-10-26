@@ -1,4 +1,3 @@
-<cfscript>
 component extends="taffy.core.resource" taffy_uri="/users" {
 
 function get(){
@@ -14,10 +13,10 @@ function get(){
 			"emailName"	: User.getEmail(),
 			"stateProvinceId" : User.getStateProvince().getId(),
 			"deleted"		: User.getDeleted()
-			});
-		}
-	return rep(Result);
+		});
 	}
+	return rep(Result);
+}
 
 function put(
 	required string firstname, 
@@ -30,22 +29,21 @@ function put(
 
 	if (isNull(StateProvince))	{
 		return noData();
-		}
+	}
 
 	
 	var User = EntityNew("Users", {
-			firstname : arguments.firstname, 
-			lastname : arguments.lastname, 
-			email : arguments.email, 
-			stateprovince : StateProvince
-			});
+		firstname : arguments.firstname, 
+		lastname : arguments.lastname, 
+		email : arguments.email, 
+		stateprovince : StateProvince
+	});
 	EntitySave(User);
 	ORMFlush();
 
 	return rep({'status' : 'success','time' : GetHttpTimeString(now()),
 		'messages' : ['<b>Success:</b> User has been created.']
-		});
-	}
-
+	});
 }
-</cfscript>
+
+} // end component

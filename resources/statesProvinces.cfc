@@ -1,4 +1,4 @@
-component extends="taffy.core.resource" taffy_uri="/stateandprovince" {
+component extends="taffy.core.resource" taffy_uri="/statesprovinces" {
 
 function get(){
 
