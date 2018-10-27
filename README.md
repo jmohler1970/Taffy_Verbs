@@ -1,5 +1,5 @@
-# Taffy_video2
-Using Taffy part 3
+# Taffy for REST: Part 3 Verbs 
+
 
 I talked so much during my first Taffy example, I had to split it into two videos.
 
