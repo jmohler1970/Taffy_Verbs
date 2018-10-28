@@ -7,6 +7,6 @@
     "installPaths":{
         "taffy":"taffy/",
         "formutils":"formutils/",
-        "northamerica":"db_setup"
+        "northamerica":"db_setup/"
     }
 }
