@@ -18,7 +18,7 @@ function get(){
 	return rep(Result);
 }
 
-function put(
+function post(
 	required string firstname, 
 	required string lastname,
 	required string email, 

@@ -19,7 +19,7 @@ function get(required numeric id){
 	}
 
 
-function post(required numeric id,
+function put(required numeric id,
 	required string firstname,
 	required string lastname,
 	required string email,
