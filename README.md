@@ -38,11 +38,11 @@ We have `/users` and `/users/{id}`
 
 Without even looking at the code, I have an idea as to what these are supposed to do.
 
-`/users` `GET` should return a list of all users
-`/users` `POST` should add a user
-`/users/{id}` `GET` should return one user
-`/users/{id}` `PUT` should return update one user
-`/users/{id}` `DELETE` should delete one user
+`/users` 		`GET`	should return a list of all users
+`/users` 		`POST`	should add a user
+`/users/{id}` 	`GET`	should return one user. It may return zero
+`/users/{id}` 	`PUT`	should return update one user
+`/users/{id}` 	`DELETE`	should delete one user
 
 I supposet if `/users` had `DELETE`, that would empty the entire database table.
 
@@ -61,6 +61,29 @@ Line 5: This is where ORM becomes very different databases. When I pull this Ent
 Firstname, lastname, email seem straight forward.
 
 On line 11: Deleted is a flag. I have worked for a lot of big companies over the years. We don't like deleting data. If you just flag it as deleted, you can recover it later. Just in case.
+
+# About Resource Responses
+
+I want my responses to have a boring consistency. When you are designing your REST API, figure out one way to do, and stick to it. Here is what I have got. A struct will be returned all the time with the following keys
+
+```
+{
+status 		: 'success', 				// This status will go all the way through to context class in Bootstrap, or Bulma, or Material Design
+time 		: GetHttpTimeString(now()), 	// This is just easy to do, and can quickly be seen
+message_code 	: 'HELLO_WORLD', 			// When I get to i18n, this will be the raw key. This is for debuggin i18n
+message 		: 'Hello, world!', 			// This is the 'post i18n' lookup. It is possible tht there will not be a match
+data 		: [] or {}				// This one may be non existant depending on the nature of the request
+}
+```
+
+Not it is not a part of the data, but there is also an HTTP response code. It should be set as appropriate too.
+
+## Word of advice
+
+We want our rest endpoint to be used by a wide variety system. There are a lot of client side technologies. The more of them you can keep happy, the better.
+
+
+# On to the resources
 
 
 ## Moving on to /resource/users/users.cfc
