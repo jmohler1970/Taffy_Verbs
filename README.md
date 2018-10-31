@@ -70,7 +70,7 @@ I want my responses to have a boring consistency. When you are designing your RE
 {
 status 		: 'success', 				// This status will go all the way through to context class in Bootstrap, or Bulma, or Material Design
 time 		: GetHttpTimeString(now()), 	// This is just easy to do, and can quickly be seen
-message_code 	: 'HELLO_WORLD', 			// When I get to i18n, this will be the raw key. This is for debuggin i18n
+message_i18n 	: 'HELLO_WORLD', 			// When I get to i18n, this will be the raw key. This is for debuggin i18n
 message 		: 'Hello, world!', 			// This is the 'post i18n' lookup. It is possible tht there will not be a match
 data 		: [] or {}				// This one may be non existant depending on the nature of the request
 }

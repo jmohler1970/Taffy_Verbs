@@ -1,6 +1,6 @@
 component extends="taffy.core.resource" taffy_uri="/users" {
 
-function get(){
+function get(string stateprovinceid = ""){
 
 	var Users = EntityLoad("Users", {}, "ID")
 
@@ -12,10 +12,21 @@ function get(){
 			"lastName" 	: User.getLastName(),
 			"emailName"	: User.getEmail(),
 			"stateProvinceId" : User.getStateProvince().getId(),
+			"filter_StateProvinceID" : arguments.StateProvinceID,
 			"deleted"		: User.getDeleted()
 		});
 	}
-	return rep(Result);
+
+	if (arguments.stateprovinceid != "")	{
+		Result = Result.filter(function(item) {
+			return item.StateProvinceId == item.filter_StateProvinceID;
+		})
+	}
+
+	return rep({
+		'time' 		: GetHttpTimeString(now()),
+		'data' 		: Result
+		});
 }
 
 function post(
@@ -41,8 +52,12 @@ function post(
 	EntitySave(User);
 	ORMFlush();
 
-	return rep({'status' : 'success','time' : GetHttpTimeString(now()),
-		'messages' : ['<b>Success:</b> User has been created.']
+	return rep({
+		'status' 		: 'success',
+		'time' 		: GetHttpTimeString(now()),
+		'message_i18n' : 'WELCOME',
+		'message' 	: '<b>Success:</b> User has been created.',
+		'data'		: User.getId()
 	});
 }
 
