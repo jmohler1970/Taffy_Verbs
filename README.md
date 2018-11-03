@@ -208,14 +208,14 @@ Load up the database. I am going to be using a different create script. I am goi
 
 
 
-Resources:
+# Resources:
 
-https://github.com/atuttle/Taffy
+- https://github.com/atuttle/Taffy
 
-http://taffy.io/
+- http://taffy.io/
 
-https://stackoverflow.com/questions/tagged/taffy
+- https://stackoverflow.com/questions/tagged/taffy
 
-https://github.com/jmohler1970/Taffy_video
+- https://github.com/jmohler1970/Taffy_Verbs
 
 
